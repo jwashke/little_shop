@@ -1,10 +1,7 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.feature "User can view items index" do
   scenario "they see all items on the page" do
-    # As a visitor
-    # When I visit /items
-    # I can see all items
     item_1 = Item.create(title: "item 1",
                          description: "This is the first item",
                          price: 9.99,
