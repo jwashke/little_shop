@@ -5,3 +5,14 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+category = Category.create(name: "Haikus")
+item_1 = Item.create(title: "item 1",
+                     description: "This is the first item",
+                     price: 9.99,
+                     image_path: "http://www.hikashop.com/media/com_hikashop/upload/pdf.png",
+                     category_id: category.id)
+item_2 = Item.create(title: "item 2",
+                     description: "This is the second item",
+                     price: 5.99,
+                     image_path: "http://www.hikashop.com/media/com_hikashop/upload/pdf.png")
