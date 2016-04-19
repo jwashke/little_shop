@@ -2,7 +2,7 @@
   <div class="col sm12 m8 l6">
     <ul class="collection">
       <% @cart.all_items.each do |item| %>
-        <li id="item-<%= item.id %>" class="collection-item avatar">
+        <li class="collection-item avatar">
           <%= image_tag(item[:image_path], class: "circle") %>
           <span class="title"><%= item[:title] %></span>
           <p>quantity: <%= item[:quantity] %></p>
@@ -10,7 +10,7 @@
           <span class="secondary-content"><i class="right"><%= item[:price] %></i></span>
         </li>
       <% end %>
-      <li>Total: <%= @cart.total %></li>
+      <li class="right">Total: <%= @cart.total %></li>
     </ul>
   </div>
 </div>
