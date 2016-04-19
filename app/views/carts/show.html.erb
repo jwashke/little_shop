@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col sm12 m8 l6">
+    <ul class="collection">
+      <% @cart.all_items.each do |item| %>
+        <li class="collection-item avatar">
+          <%= image_tag(item[:image_path], class: "circle") %>
+          <span class="title"><%= item[:title] %></span>
+          <p>quantity: <%= item[:quantity] %></p>
+          <p><%= item[:description] %></p>
+          <span class="secondary-content"><i class="right"><%= item[:price] %></i></span>
+        </li>
+      <% end %>
+      <li class="right">Total: <%= @cart.total %></li>
+    </ul>
+  </div>
+</div>
