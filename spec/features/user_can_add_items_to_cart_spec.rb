@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.feature "User can add an item to their cart" do
-  scenario 'they see the contents' do
+  scenario "they see the contents" do
     create_items
 
     item_1 = Item.first
@@ -11,7 +11,9 @@ RSpec.feature "User can add an item to their cart" do
 
     expect(page).to have_button("Add to Cart")
 
-    first(:button, "Add to Cart").click
+    within(".card-#{item_1.id}") do
+      click_button("Add to Cart")
+    end
 
     expect(current_path).to eq(items_path)
 

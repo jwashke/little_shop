@@ -10,15 +10,19 @@ class Cart
   end
 
   def total
-    all_items.reduce(0) do |sum, item|
+    all_items.inject(0) do |sum, item|
       sum + item[:price]
     end
   end
 
   def all_items
-    contents.map do |k,v|
-      item = Item.find(k)
-      { title: item.title, price: (item.price * v).round(2), quantity: v, image_path: item.image_path, description: item.description }
+    contents.map do |id, quantity|
+      item = Item.find(id)
+      { title: item.title,
+        price: (item.price * quantity).round(2),
+        quantity: quantity,
+        image_path: item.image_path,
+        description: item.description }
     end
   end
 end
