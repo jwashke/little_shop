@@ -17,10 +17,10 @@ RSpec.feature "User can view category index" do
 
     expect(page).to have_content("item 1")
     expect(page).to have_content("9.99")
-    expect(page).to have_css("img[src=\"#{item_1.image_path}\"]")
+    expect(page).to have_css("img[src=\"example.image\"]")
 
     expect(page).not_to have_content("item 2")
     expect(page).not_to have_content("5.99")
-    expect(page).not_to have_css("img[src=\"#{item_2.image_path}\"]")
+    expect(page).not_to have_css("img[src=\"example.image/2\"]")
   end
 end
