@@ -48,3 +48,14 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 end
+
+def create_items
+  Item.create(title: "item 1",
+              description: "This is the first item",
+              price: 9.99,
+              image_path: "example.image")
+  Item.create(title: "item 2",
+              description: "This is the second item",
+              price: 5.99,
+              image_path: "example.image/2")
+end
