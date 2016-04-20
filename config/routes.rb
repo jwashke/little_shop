@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   root to: "items#index"
   resources :items, only: [:index]
   resource :cart, only: [:create, :show]
-  get "/login", to: "sessions#new"
+  resource :users, only: [:create]
+  get "/login", to: "users#new"
+  get "/dashboard", to: "users#show"
   get "/:name", to: "categories#show", as: :category
 end

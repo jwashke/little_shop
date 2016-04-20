@@ -22,8 +22,38 @@ RSpec.feature "Visitor can visit login page" do
     end
   end
 
-  scenario "" do
+  scenario "User can create an account" do
+    visit login_path
+    within("#create-form") do
+      fill_in :Email, with: "user@example.com"
+      fill_in :Password, with: "password"
+      fill_in "First name", with: "Josh"
+      fill_in "Last name", with: "Josh"
+      fill_in :Address, with: "fake address"
+      fill_in :City, with: "Denver"
+      fill_in :State, with: "Colorado"
+      fill_in :Zip, with: "80123"
+    end
+    within("#create-form") do
+      click_button("Create Account")
+    end
+    user = User.last
+    expect(current_path).to eq(dashboard_path)
 
+    within(".nav-wrapper") do
+      expect(page).to have_content?("Logged in as Josh")
+      expect(page).to have_content?("Logout")
+      expect(page).not_to have_content?("Login")
+    end
+    within(".user-info") do
+      expect(page).to have_content?("user@example.com")
+      expect(page).to have_content?("password")
+      expect(page).to have_content?("Josh")
+      expect(page).to have_content?("Washke")
+      expect(page).to have_content?("fake address")
+      expect(page).to have_content?("Denver")
+      expect(page).to have_content?("Colorado")
+      expect(page).to have_content?("80123")
+    end
   end
-
 end
