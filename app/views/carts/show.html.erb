@@ -8,6 +8,7 @@
           <p>quantity: <%= item[:quantity] %></p>
           <p><%= item[:description] %></p>
           <span class="secondary-content"><i class="right"><%= item[:price] %></i></span>
+          <%= link_to "Delete", cart_path(item_id: item[:id]), method: :delete %>
         </li>
       <% end %>
       <li class="right">Total: <%= @cart.total %></li>

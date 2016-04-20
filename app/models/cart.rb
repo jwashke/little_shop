@@ -22,7 +22,12 @@ class Cart
         price: (item.price * quantity).round(2),
         quantity: quantity,
         image_path: item.image_path,
-        description: item.description }
+        description: item.description,
+        id: id }
     end
+  end
+
+  def delete_item(item_id)
+    contents.delete(item_id.to_s)
   end
 end
