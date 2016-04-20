@@ -46,14 +46,6 @@ RSpec.feature "Visitor can visit login page" do
       expect(page).not_to have_content?("Login")
     end
     within(".user-info") do
-      expect(page).to have_content?("user@example.com")
-      expect(page).to have_content?("password")
-      expect(page).to have_content?("Josh")
-      expect(page).to have_content?("Washke")
-      expect(page).to have_content?("fake address")
-      expect(page).to have_content?("Denver")
-      expect(page).to have_content?("Colorado")
-      expect(page).to have_content?("80123")
     end
   end
 end
