@@ -11,24 +11,12 @@
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
-
-<nav>
-    <div class="nav-wrapper">
-      <a href="/items" class="brand-logo">Digital Destination</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="/cart"><i class="large material-icons">shopping_cart</i>Cart</a></li>
-      </ul>
-    </div>
-  </nav>
 <body>
-  <!-- <div class="row">
-    <div class="col m4 offset-m3" -->
-      <% flash.each do |type, message| %>
-        <%= content_tag :div, message.html_safe, class: "flash_#{type}" %>
-      <% end %>
-    <!-- </div>
-  </div> -->
+  <%= render partial: "layouts/nav" %>
   <div class="container">
+    <% flash.each do |type, message| %>
+      <%= content_tag :div, message.html_safe, class: "flash_#{type}" %>
+    <% end %>
         <!-- Page Content goes here -->
     <%= yield %>
   </div>
