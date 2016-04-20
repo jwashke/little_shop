@@ -12,7 +12,7 @@ class Cart
   def total
     all_items.inject(0) do |sum, item|
       sum + item[:price]
-    end
+    end.round(2)
   end
 
   def all_items

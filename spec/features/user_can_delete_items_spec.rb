@@ -4,7 +4,6 @@ RSpec.feature "User can delete an item from cart and undo" do
   scenario "they see updated cart" do
     create_items
     item_1 = Item.first
-    item_2 = Item.last
 
     visit items_path
 
@@ -21,7 +20,7 @@ RSpec.feature "User can delete an item from cart and undo" do
 
     expect(page).not_to have_content "9.99"
 
-    click_on "undo"
+    click_on "Put one back?"
 
     expect(page).to have_content "item 1"
     expect(page).to have_content "9.99"
