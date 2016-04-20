@@ -1,6 +1,8 @@
-.flash_notice {
-  padding: 20px;
+$black: #000000;
+
+.flash-notice {
   border: 2px solid;
-  color:black ;
+  color: $black;
+  padding: 20px;
   text-align: center;
 }
