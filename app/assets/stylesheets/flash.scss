@@ -1,6 +1,8 @@
+$black = #000000
+
 .flash_notice {
   border: 2px solid;
-  color: #000000 ;
+  color: $black;
   padding: 20px;
   text-align: center;
 }
