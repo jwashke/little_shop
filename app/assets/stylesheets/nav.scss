@@ -1,5 +1,7 @@
+$black = #000000
+
 .bar {
-  color: #000;
+  color:$black;
   margin: 0 auto;
   max-width: 960px;
 }
