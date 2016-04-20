@@ -14,7 +14,7 @@ class CartsController < ApplicationController
     link = view_context.link_to("Put one back?",
                                 cart_path(item_id: item.id),
                                 method: :post)
-                                
+  
     flash.now[:notice] = %[Removed #{item.title} from cart. #{link}]
 
     render :show
