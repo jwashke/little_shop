@@ -37,7 +37,6 @@ RSpec.feature "Visitor can visit login page" do
     within("#create-form") do
       click_button("Create Account")
     end
-    user = User.last
     expect(current_path).to eq(dashboard_path)
     expect(page).to have_content("Account successfully created")
     within(".nav-wrapper") do
