@@ -1,1 +1,6 @@
-
+.flash_notice {
+  padding: 20px;
+  border: 2px solid;
+  color:black ;
+  text-align: center;
+}

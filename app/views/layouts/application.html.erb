@@ -21,6 +21,13 @@
     </div>
   </nav>
 <body>
+  <!-- <div class="row">
+    <div class="col m4 offset-m3" -->
+      <% flash.each do |type, message| %>
+        <%= content_tag :div, message.html_safe, class: "flash_#{type}" %>
+      <% end %>
+    <!-- </div>
+  </div> -->
   <div class="container">
         <!-- Page Content goes here -->
     <%= yield %>
