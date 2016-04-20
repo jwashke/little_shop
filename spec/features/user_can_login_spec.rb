@@ -39,13 +39,10 @@ RSpec.feature "Visitor can visit login page" do
     end
     user = User.last
     expect(current_path).to eq(dashboard_path)
-
+    expect(page).to have_content("Account successfully created")
     within(".nav-wrapper") do
-      expect(page).to have_content?("Logged in as Josh")
-      expect(page).to have_content?("Logout")
-      expect(page).not_to have_content?("Login")
-    end
-    within(".user-info") do
+      expect(page).to have_content("Logout")
+      expect(page).not_to have_content("Login")
     end
   end
 end
