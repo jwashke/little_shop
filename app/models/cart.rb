@@ -12,7 +12,7 @@ class Cart
   def total
     all_items.inject(0) do |sum, item|
       sum + item[:price]
-    end
+    end.round(2)
   end
 
   def all_items
@@ -22,7 +22,12 @@ class Cart
         price: (item.price * quantity).round(2),
         quantity: quantity,
         image_path: item.image_path,
-        description: item.description }
+        description: item.description,
+        id: id }
     end
+  end
+
+  def delete_item(item_id)
+    contents.delete(item_id.to_s)
   end
 end

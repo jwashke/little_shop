@@ -24,6 +24,11 @@
     </div>
   </nav>
 
+      <% flash.each do |type, message| %>
+        <%= content_tag :div, message.html_safe, class: "flash_#{type}" %>
+      <% end %>
+
+
   <div class="container">
         <!-- Page Content goes here -->
     <%= yield %>
