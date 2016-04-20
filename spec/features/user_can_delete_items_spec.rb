@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.feature "User can delete an item from their cart" do
+RSpec.feature "User can delete an item from cart and undo" do
   scenario "they see updated cart" do
     create_items
     item_1 = Item.first
@@ -15,12 +15,15 @@ RSpec.feature "User can delete an item from their cart" do
     visit cart_path
 
     expect(page).to have_content "item 1"
+    expect(page).to have_content "9.99"
     click_on "Delete"
-    expect(page).not_to have_content "item 1"
+    expect(page).to have_content "Removed #{item_1.title}"
 
-    visit items_path
-    # save_and_open_page
-    click_link "Cart"
-    # save_and_open_page
+    expect(page).not_to have_content "9.99"
+
+    click_on "undo"
+
+    expect(page).to have_content "item 1"
+    expect(page).to have_content "9.99"
   end
 end
