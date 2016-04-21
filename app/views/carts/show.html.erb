@@ -5,16 +5,16 @@
         <li class="collection-item avatar">
           <%= image_tag(item[:image_path], class: "circle") %>
           <span class="title"><%= item[:title] %></span>
+          <p><%= item[:description] %></p>
 
             <%= form_tag cart_path, method: :patch do %>
               <%= hidden_field_tag(:item_id, item[:id]) %>
-              <%= number_field_tag(:quantity, item[:quantity], min: 0, class: "col s2 right") %>
-              <%= submit_tag("Update", class: "right") %>
+              <%= number_field_tag(:quantity, item[:quantity], min: 1, class: "right right-align") %>
+              <%= submit_tag("Update", class: "right btn") %>
             <% end %>
 
 
-          <p><%= item[:description] %></p>
-          <%= link_to "Delete", cart_path(item_id: item[:id]), method: :delete %>
+          <%= link_to "Delete", cart_path(item_id: item[:id]), method: :delete, class: "btn" %>
           <span class="secondary-content right"><%= item[:price] %></span>
         </li>
       <% end %>
