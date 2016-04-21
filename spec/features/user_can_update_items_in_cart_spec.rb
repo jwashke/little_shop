@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.feature "User can update quantity of items in cart" do
-  scenario 'they stay on the cart page and see updated quantity of items' do
+  scenario "they stay on the cart page and see updated quantity of items" do
     create_items
     id = Item.last.id
     visit items_path
