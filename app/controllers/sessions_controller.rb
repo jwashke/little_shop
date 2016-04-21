@@ -9,4 +9,10 @@ class SessionsController < ApplicationController
       redirect_to login_path
     end
   end
+
+  def destroy
+    session.clear
+    @cart = nil
+    redirect_to root_path
+  end
 end
