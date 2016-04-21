@@ -24,7 +24,7 @@ RSpec.feature "User can view orders" do
     visit cart_path
     click_on "Checkout"
     expect(page).to have_content("Order History")
-
+    save_and_open_page
     within(".highlight") do
       expect(page).to have_content("item 1")
       expect(page).to have_content("item 2")
