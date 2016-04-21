@@ -59,3 +59,14 @@ def create_items
               price: 5.99,
               image_path: "example.image/2")
 end
+
+def create_user
+  User.create(email: "user@example.com",
+              password: "password",
+              first_name: "first name",
+              last_name: "last name",
+              address: "address",
+              city: "city",
+              state: "state",
+              zip: "zip")
+end
