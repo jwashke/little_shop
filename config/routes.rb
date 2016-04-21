@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root to: "items#index"
   resources :items, only: [:index]
-  resource :cart, only: [:create, :show, :destroy]
+  resource :cart, only: [:create, :show, :destroy, :update]
   resource :users, only: [:create]
   get "/login", to: "users#new"
   post "/login", to: "sessions#create"
