@@ -10,5 +10,4 @@ class CartItems < SimpleDelegator
   def price
     (item.price * quantity).round(2)
   end
-
 end

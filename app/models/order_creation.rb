@@ -11,5 +11,4 @@ class OrderCreation
       current_user.orders.create(item_id: item_id, quantity: quantity)
     end
   end
-
 end
