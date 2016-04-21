@@ -1,37 +1,38 @@
-category = Category.create(name: "Haikus")
-Item.create(title: "Item 1",
-            description: "This is the first item",
-            price: 9.99,
-            image_path:
-            "http://www.hikashop.com/media/com_hikashop/upload/pdf.png",
-            category_id: category.id)
-Item.create(title: "Item 2",
-            description: "This is the second item",
-            price: 5.99,
-            image_path:
-            "http://www.hikashop.com/media/com_hikashop/upload/pdf.png")
-Item.create(title: "item 3",
-            description: "This is the second item",
-            price: 5.99,
-            image_path:
-            "http://www.hikashop.com/media/com_hikashop/upload/pdf.png")
-Item.create(title: "item 4",
-            description: "This is the second item",
-            price: 5.99,
-            image_path:
-            "http://www.hikashop.com/media/com_hikashop/upload/pdf.png")
-Item.create(title: "item 5",
-            description: "This is the second item",
-            price: 5.99,
-            image_path:
-            "http://www.hikashop.com/media/com_hikashop/upload/pdf.png")
-Item.create(title: "item 6",
-            description: "This is the second item",
-            price: 5.99,
-            image_path:
-            "http://www.hikashop.com/media/com_hikashop/upload/pdf.png")
-Item.create(title: "item 7",
-            description: "This is the second item",
-            price: 5.99,
-            image_path:
-            "http://www.hikashop.com/media/com_hikashop/upload/pdf.png")
+Category.create(name: "fiction")
+Category.create(name: "literature")
+Category.create(name: "history")
+Category.create(name: "non-fiction")
+
+category_1 = Category.all[0]
+category_2 = Category.all[1]
+category_3 = Category.all[2]
+category_4 = Category.all[3]
+
+
+5.times do |i|
+  category_2.items.create(title: "Item #{i}",
+                          description: "Description #{i}",
+                          price: 5.99,
+                          image_path: "http://www.hikashop.com/media/com_hikashop/upload/pdf.png")
+end
+
+5.times do |i|
+  category_1.items.create(title: "Item #{i + 5}",
+                          description: "Description #{i + 5}",
+                          price: 5.99,
+                          image_path: "http://www.hikashop.com/media/com_hikashop/upload/pdf.png")
+end
+
+5.times do |i|
+  category_3.items.create(title: "Item #{i + 10}",
+                          description: "Description #{i + 10}",
+                          price: 5.99,
+                          image_path: "http://www.hikashop.com/media/com_hikashop/upload/pdf.png")
+end
+
+5.times do |i|
+  category_4.items.create(title: "Item #{i + 15}",
+                          description: "Description #{i + 15}",
+                          price: 5.99,
+                          image_path: "http://www.hikashop.com/media/com_hikashop/upload/pdf.png")
+end
