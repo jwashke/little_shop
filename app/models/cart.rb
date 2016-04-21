@@ -30,4 +30,8 @@ class Cart
   def delete_item(item_id)
     contents.delete(item_id.to_s)
   end
+
+  def update_item(item_id, quantity)
+    contents[item_id.to_s] = quantity
+  end
 end
