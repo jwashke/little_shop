@@ -2,13 +2,6 @@ require "rails_helper"
 
 RSpec.feature "User can logout" do
   scenario "He sees the login link and an empty cart" do
-  #   As a user
-  # When i am logged in
-  # I can click the loggout link
-  # and i shouldnt see logout
-  # and I should see a link to login
-  # and when I click on the cart
-  # The cart should be empty
     create_user
     create_items
     item = Item.first
@@ -26,7 +19,7 @@ RSpec.feature "User can logout" do
     within(".card-#{item.id}") do
       click_button("Add to Cart")
     end
-    #save_and_open_page
+
     click_link("Logout")
 
     expect(page).to have_content("Login")
@@ -37,6 +30,5 @@ RSpec.feature "User can logout" do
     end
 
     expect(page).not_to have_content("#{item.title}")
-
   end
 end
