@@ -6,7 +6,7 @@
     </ul>
   </div>
   <div class="col s12 l6 offset-l3" id="login-form">
-    <h5 class="center">Enter your information to login,</h5>
+    <h5 class="center">Enter your information to login</h5>
     <%= form_for(:session, url: login_path) do |f| %>
     <div class="input-field col s12 l8 offset-l2">
       <%= f.text_field :email %>
@@ -22,7 +22,7 @@
     <% end %>
   </div>
   <div class="col s6 offset-s3" id="create-form">
-    <h5 class="center">or create an account.</h5>
+    <h5 class="center">create an account</h5>
     <%= form_for(@user) do |f| %>
     <div class="input-field col s8 offset-s2">
       <%= f.text_field :email %>
