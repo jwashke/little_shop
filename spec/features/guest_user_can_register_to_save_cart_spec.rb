@@ -20,7 +20,7 @@ RSpec.feature "User can register an account" do
     within(".nav-wrapper") do
       click_link("Cart")
     end
-    
+
     click_button("Create Account to Checkout")
 
     within("#create-form") do
@@ -42,15 +42,4 @@ RSpec.feature "User can register an account" do
     expect(page).to have_content("#{item_1.title}")
     expect(page).to have_content("#{item_2.title}")
   end
-
-  # As a visitor when I have items in my cart
-  #   And when I visit "/cart"
-  #   I should not see an option to "Checkout"
-  #   I should see an option to "Login or Create Account to Checkout"
-  #   After I create an account
-  #   And I visit "/cart
-  #   Then I should see all of the data that was there when I was not logged in
-  #   When I click "Logout"
-  #   Then I should see see "Login"
-  #   And I should not see "Logout"
 end
