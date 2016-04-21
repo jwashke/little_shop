@@ -1,4 +1,6 @@
 module ApplicationHelper
+  include CategoryHelper
+
   def link_to_login_or_logout
     if current_user
       link_to "Logout", logout_path, method: :delete

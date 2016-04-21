@@ -19,6 +19,7 @@ RSpec.feature "User can logout" do
     within(".card-#{item.id}") do
       click_button("Add to Cart")
     end
+
     click_link("Logout")
 
     expect(page).to have_content("Login")
