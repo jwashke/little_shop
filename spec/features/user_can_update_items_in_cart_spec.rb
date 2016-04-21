@@ -23,7 +23,6 @@ RSpec.feature "User can update quantity of items in cart" do
     click_button("Update")
 
     expect(current_path).to eq(cart_path)
-
     within("ul.collection:nth-child(1)") do
       expect(page).to have_content("Item 2")
       expect(page).to have_field("quantity", with: "3")

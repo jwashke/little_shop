@@ -11,19 +11,14 @@ class Cart
 
   def total
     all_items.inject(0) do |sum, item|
-      sum + item[:price]
+      sum + item.price
     end.round(2)
   end
 
   def all_items
     contents.map do |id, quantity|
       item = Item.find(id)
-      { title: item.title,
-        price: (item.price * quantity).round(2),
-        quantity: quantity,
-        image_path: item.image_path,
-        description: item.description,
-        id: id }
+      CartItems.new(item, quantity)
     end
   end
 
