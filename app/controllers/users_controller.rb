@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :require_login, only: [:show]
+
   def new
     @user = User.new
   end
@@ -14,11 +16,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    if current_user
-      @user = current_user
-    else
-      redirect_to login_path
-    end
+    @user = current_user
   end
 
   private
@@ -32,5 +30,9 @@ class UsersController < ApplicationController
                                  :city,
                                  :state,
                                  :zip)
+  end
+
+  def require_login
+    redirect_to login_path unless current_user
   end
 end

@@ -12,7 +12,6 @@ class SessionsController < ApplicationController
 
   def destroy
     session.clear
-    @cart = nil
     redirect_to root_path
   end
 end
