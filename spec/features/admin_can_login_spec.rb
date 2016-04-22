@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.feature "Admin can login" do
   scenario "and be taken to the admin dashboard" do
-    admin = User.create(
+    User.create(
       email: "admin@example.com",
       password: "password",
       first_name: "first name",
