@@ -11,4 +11,6 @@ class User < ActiveRecord::Base
   validates :zip, presence: true
   has_many :orders
   has_many :items, through: :orders
+
+  enum role: %w(default admin)
 end
