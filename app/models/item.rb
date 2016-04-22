@@ -6,4 +6,6 @@ class Item < ActiveRecord::Base
   validates :image_path,  presence: true
   has_many :orders
   has_many :users, through: :orders
+
+  enum state: %w(active retired)
 end
