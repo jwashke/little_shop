@@ -8,6 +8,7 @@
     </tr>
     <% @orders.each do |order|%>
     <tr>
+      
       <td><%= order.item.title %></td>
       <td><%= order.quantity %></td>
       <td><%= ((order.quantity) * (order.item.price)).round(2) %></td>
