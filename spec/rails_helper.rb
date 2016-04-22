@@ -70,3 +70,17 @@ def create_user
               state: "state",
               zip: "zip")
 end
+
+def create_admin
+  User.create(
+    email: "admin@example.com",
+    password: "password",
+    first_name: "first name",
+    last_name: "last name",
+    address: "address",
+    city: "city",
+    state: "state",
+    zip: "zip",
+    role: 1
+  )
+end
