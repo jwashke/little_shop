@@ -6,11 +6,13 @@ module CategoryHelper
 
   def display_category_link(category, active_category)
     if category.name == active_category
-      link_to "#{category.name}", category_path(category.name), 
-      class: "collection-item active"
+      link_to category.name,
+              category_path(category.name),
+              class: "collection-item active"
     else
-      link_to "#{category.name}", category_path(category.name),
-      class: "collection-item"
+      link_to category.name,
+              category_path(category.name),
+              class: "collection-item"
     end
   end
 end

@@ -13,7 +13,7 @@ RSpec.feature "Admin can retire an item" do
 
     expect(page).to have_content(item.title)
 
-    find("a", :text => "Item Retired").click
+    find("a", text: "Item Retired").click
 
     click_link("Cart")
     expect(current_path).to eq(cart_path)
