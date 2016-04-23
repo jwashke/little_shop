@@ -1,8 +1,7 @@
 require "rails_helper"
 
 RSpec.feature "User can view orders" do
-  scenario "they see an order breakdown" do 
-
+  scenario "they see an order breakdown" do
     user = create_user
 
     ApplicationController.any_instance.stubs(:current_user).returns(user)
@@ -21,11 +20,10 @@ RSpec.feature "User can view orders" do
       click_button("Add to Cart")
     end
 
-
     visit cart_path
     click_on "Checkout"
     order = Order.first
     expect(page).to have_content("Your Orders")
-    expect(page).to have_content("#{order.date}")
+    expect(page).to have_content(order.date.to_s)
   end
 end

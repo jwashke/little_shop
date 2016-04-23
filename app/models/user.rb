@@ -14,5 +14,4 @@ class User < ActiveRecord::Base
   has_many :items, through: :invoices
 
   enum role: %w(default admin)
-
 end

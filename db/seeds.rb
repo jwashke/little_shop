@@ -36,3 +36,24 @@ end
                           price: 5.99,
                           image_path: "http://www.hikashop.com/media/com_hikashop/upload/pdf.png")
 end
+
+    User.create(email: "user@example.com",
+    password: "password",
+    first_name: "first name",
+    last_name: "last name",
+    address: "address",
+    city: "city",
+    state: "state",
+    zip: "zip")
+
+    User.create(
+      email: "admin@example.com",
+      password: "password",
+      first_name: "first name",
+      last_name: "last name",
+      address: "address",
+      city: "city",
+      state: "state",
+      zip: "zip",
+      role: 1
+    )

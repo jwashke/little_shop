@@ -9,7 +9,11 @@ class InvoiceCreation
 
   def create
     cart.contents.each do |item_id, quantity|
-      current_user.invoices.create(item_id: item_id, quantity: quantity, order_id: order.id)
+      current_user.invoices.create(
+        item_id: item_id,
+        quantity: quantity,
+        order_id: order.id
+      )
     end
   end
 end
