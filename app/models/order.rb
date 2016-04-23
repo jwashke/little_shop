@@ -2,6 +2,8 @@ class Order < ActiveRecord::Base
   has_many :invoices
   has_many :items, through: :invoices
 
+  enum status: %w(Ordered Paid Cancelled Completed)
+
   def quantity
     invoices.sum(:quantity)
   end
@@ -13,7 +15,7 @@ class Order < ActiveRecord::Base
     end
   end
 
-  def status
-    
+  def current_status
+    status
   end
 end
