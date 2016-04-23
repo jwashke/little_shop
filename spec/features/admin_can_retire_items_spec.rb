@@ -1,6 +1,23 @@
 require "rails_helper"
 
 RSpec.feature "Admin can retire an item" do
+  scenario "Admin can click retire next to an item" do
+    admin = create_admin
+
+    ApplicationController.any_instance.stubs(:current_user).returns(admin)
+    create_one_item
+    visit admin_dashboard_path
+
+    item = Item.last
+    expect(item.state).to eq("active")
+
+    click_on "Items"
+    click_on "Retire"
+    
+    item = Item.last
+    expect(item.state).to eq("retired")
+  end
+
   scenario "retired item can not be added to cart" do
     item = Item.create(
       title: "Item 2",

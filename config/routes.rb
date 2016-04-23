@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   delete "/logout", to: "sessions#destroy"
   get "/dashboard", to: "users#show"
   namespace :admin do
-    get "dashboard", to: "dashboard#show"
+    get "/dashboard", to: "dashboard#show"
+    patch "/items/:id/retire", to: "items#retire", as: :retire
+    resources :items, only: [:index]
   end
   get "/:name", to: "categories#show", as: :category
 end

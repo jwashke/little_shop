@@ -50,12 +50,23 @@ def create_items
     title: "Item 1",
     description: "This is the first item",
     price: 9.99,
-    image_path: "example.image")
+    image_path: "example.image"
+  )
   Item.create(
     title: "Item 2",
     description: "This is the second item",
     price: 5.99,
-    image_path: "example.image/2")
+    image_path: "example.image/2"
+  )
+end
+
+def create_one_item
+  Item.create(
+    title: "Item 1",
+    description: "This is the first item",
+    price: 9.99,
+    image_path: "example.image"
+  )
 end
 
 def create_user

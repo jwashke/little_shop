@@ -8,4 +8,8 @@ class Item < ActiveRecord::Base
   has_many :users, through: :orders
 
   enum state: %w(active retired)
+
+  def retire
+    update(state: "retired")
+  end
 end
