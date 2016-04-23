@@ -2,7 +2,6 @@ require "rails_helper"
 
 RSpec.feature "User can view orders" do
   scenario "they see an order breakdown" do
-
     user = create_user
 
     ApplicationController.any_instance.stubs(:current_user).returns(user)
@@ -23,12 +22,8 @@ RSpec.feature "User can view orders" do
 
     visit cart_path
     click_on "Checkout"
-    expect(page).to have_content("Order History")
-    within(".highlight") do
-      expect(page).to have_content("Item 1")
-      expect(page).to have_content("Item 2")
-      expect(page).to have_content("9.99")
-      expect(page).to have_content("5.99")
-    end
+    order = Order.first
+    expect(page).to have_content("Your Orders")
+    expect(page).to have_content(order.date.to_s)
   end
 end

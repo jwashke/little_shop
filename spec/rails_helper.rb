@@ -71,6 +71,26 @@ def create_user
               zip: "zip")
 end
 
+def create_orders
+  create_items
+  item = Item.first
+  item2 = Item.last
+  order = Order.create(date: "04/21/2016")
+  user = create_user
+  Invoice.create(
+    user_id: user.id,
+    item_id: item.id,
+    quantity: 1,
+    order_id: order.id
+  )
+  Invoice.create(
+    user_id: user.id,
+    item_id: item2.id,
+    quantity: 1,
+    order_id: order.id
+  )
+end
+
 def create_admin
   User.create(
     email: "admin@example.com",
