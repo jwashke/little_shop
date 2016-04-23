@@ -39,11 +39,6 @@ RSpec.feature "Admin can change the state of an item" do
   end
 
   scenario "admin can reactivate retired item" do
-#     As an Admin
-# When I visit the admin dashboard
-# I can view a list of all items
-# and I can click activate next to one of the retired items
-# And that will set the items status to active
     admin = create_admin
 
     ApplicationController.any_instance.stubs(:current_user).returns(admin)
