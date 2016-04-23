@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :items, only: [:index]
   resource :cart, only: [:create, :show, :destroy, :update]
   resource :users, only: [:create]
+  resources :invoices, only: [:create, :index]
   resources :orders, only: [:create, :index]
 
   get "/login", to: "users#new"

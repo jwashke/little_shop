@@ -70,3 +70,14 @@ def create_user
               state: "state",
               zip: "zip")
 end
+
+def create_orders
+  create_items
+  item = Item.first
+  item2 = Item.last
+  order = Order.create(date: "04/21/2016")
+  user = create_user
+  invoice = Invoice.create(user_id: user.id, item_id: item.id, quantity: 1, order_id: order.id)
+  invoice2 = Invoice.create(user_id: user.id, item_id: item2.id, quantity: 1, order_id: order.id)
+
+end

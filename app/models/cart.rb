@@ -1,5 +1,5 @@
 class Cart
-  attr_reader :contents
+  attr_accessor :contents
   def initialize(initial_contents)
     @contents = initial_contents || {}
   end
@@ -29,4 +29,5 @@ class Cart
   def update_item(item_id, quantity)
     contents[item_id.to_s] = quantity
   end
+
 end

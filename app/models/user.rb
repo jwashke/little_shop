@@ -9,6 +9,6 @@ class User < ActiveRecord::Base
   validates :city, presence: true
   validates :state, presence: true
   validates :zip, presence: true
-  has_many :orders
-  has_many :items, through: :orders
+  has_many :invoices
+  has_many :items, through: :invoices
 end
