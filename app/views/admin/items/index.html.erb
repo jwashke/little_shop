@@ -14,7 +14,10 @@
       <td><%= item.title %></td>
       <td><%= item.price %></td>
       <td><%= item.updated_at %></td>
-      <td><%= button_to_change_item_state(item) %></td>
+      <td><%= link_to "Retire",
+              admin_retire_path(item), 
+              method: :patch,
+              class: "waves-effect waves-light btn" %></td>
     </tr>
   <% end %>
 </table>
