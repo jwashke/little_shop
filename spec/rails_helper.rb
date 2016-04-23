@@ -13,16 +13,12 @@ Shoulda::Matchers.configure do |config|
     with.library :rails
   end
 end
-# Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
 # Checks for pending migration and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
-  # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
-  config.fixture_path = "#{::Rails.root}/spec/fixtures"
-
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
@@ -50,25 +46,42 @@ RSpec.configure do |config|
 end
 
 def create_items
-  Item.create(title: "Item 1",
-              description: "This is the first item",
-              price: 9.99,
-              image_path: "example.image")
-  Item.create(title: "Item 2",
-              description: "This is the second item",
-              price: 5.99,
-              image_path: "example.image/2")
+  Item.create(
+    title: "Item 1",
+    description: "This is the first item",
+    price: 9.99,
+    image_path: "example.image")
+  Item.create(
+    title: "Item 2",
+    description: "This is the second item",
+    price: 5.99,
+    image_path: "example.image/2")
 end
 
 def create_user
-  User.create(email: "user@example.com",
-              password: "password",
-              first_name: "first name",
-              last_name: "last name",
-              address: "address",
-              city: "city",
-              state: "state",
-              zip: "zip")
+  User.create(
+    email: "user@example.com",
+    password: "password",
+    first_name: "first name",
+    last_name: "last name",
+    address: "address",
+    city: "city",
+    state: "state",
+    zip: "zip")
+end
+
+def create_admin
+  User.create(
+    email: "admin@example.com",
+    password: "password",
+    first_name: "first name",
+    last_name: "last name",
+    address: "address",
+    city: "city",
+    state: "state",
+    zip: "zip",
+    role: 1
+  )
 end
 
 def create_orders

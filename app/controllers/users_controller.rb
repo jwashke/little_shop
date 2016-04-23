@@ -22,14 +22,16 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email,
-                                 :password,
-                                 :first_name,
-                                 :last_name,
-                                 :address,
-                                 :city,
-                                 :state,
-                                 :zip)
+    params.require(:user).permit(
+      :email,
+      :password,
+      :first_name,
+      :last_name,
+      :address,
+      :city,
+      :state,
+      :zip
+    )
   end
 
   def require_login
