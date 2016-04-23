@@ -79,5 +79,18 @@ def create_orders
   user = create_user
   invoice = Invoice.create(user_id: user.id, item_id: item.id, quantity: 1, order_id: order.id)
   invoice2 = Invoice.create(user_id: user.id, item_id: item2.id, quantity: 1, order_id: order.id)
+end
 
+def create_admin
+  User.create(
+    email: "admin@example.com",
+    password: "password",
+    first_name: "first name",
+    last_name: "last name",
+    address: "address",
+    city: "city",
+    state: "state",
+    zip: "zip",
+    role: 1
+  )
 end

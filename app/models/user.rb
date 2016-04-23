@@ -9,6 +9,10 @@ class User < ActiveRecord::Base
   validates :city, presence: true
   validates :state, presence: true
   validates :zip, presence: true
+
   has_many :invoices
   has_many :items, through: :invoices
+
+  enum role: %w(default admin)
+
 end
