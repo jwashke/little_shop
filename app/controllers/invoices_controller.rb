@@ -6,6 +6,7 @@ class InvoicesController < ApplicationController
     invoices = InvoiceCreation.new(@cart, current_user, order)
     invoices.create
     session[:cart] = {}
+    flash[:notice] = "Order was successfully placed"
     redirect_to orders_path
   end
 
