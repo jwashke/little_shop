@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get "/dashboard", to: "dashboard#show"
     patch "/items/:id/retire", to: "items#retire", as: :retire
+    patch "/items/:id/activate", to: "items#activate", as: :activate
     resources :items, only: [:index]
   end
   get "/:name", to: "categories#show", as: :category
