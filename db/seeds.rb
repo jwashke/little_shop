@@ -10,29 +10,60 @@ category_4 = Category.all[3]
 
 
 5.times do |i|
-  category_2.items.create(title: "Item #{i}",
-                          description: "Description #{i}",
-                          price: 5.99,
-                          image_path: "http://www.hikashop.com/media/com_hikashop/upload/pdf.png")
+  category_2.items.create(
+    title: "Item #{i}",
+    description: "Description #{i}",
+    price: 5.99,
+    image_path: "http://www.hikashop.com/media/com_hikashop/upload/pdf.png"
+  )
 end
 
 5.times do |i|
-  category_1.items.create(title: "Item #{i + 5}",
-                          description: "Description #{i + 5}",
-                          price: 5.99,
-                          image_path: "http://www.hikashop.com/media/com_hikashop/upload/pdf.png")
+  category_1.items.create(
+    title: "Item #{i + 5}",
+    description: "Description #{i + 5}",
+    price: 5.99,
+    image_path: "http://www.hikashop.com/media/com_hikashop/upload/pdf.png"
+  )
 end
 
 5.times do |i|
-  category_3.items.create(title: "Item #{i + 10}",
-                          description: "Description #{i + 10}",
-                          price: 5.99,
-                          image_path: "http://www.hikashop.com/media/com_hikashop/upload/pdf.png")
+  category_3.items.create(
+    title: "Item #{i + 10}",
+    description: "Description #{i + 10}",
+    price: 5.99,
+    image_path: "http://www.hikashop.com/media/com_hikashop/upload/pdf.png"
+  )
 end
 
 5.times do |i|
-  category_4.items.create(title: "Item #{i + 15}",
-                          description: "Description #{i + 15}",
-                          price: 5.99,
-                          image_path: "http://www.hikashop.com/media/com_hikashop/upload/pdf.png")
+  category_4.items.create(
+    title: "Item #{i + 15}",
+    description: "Description #{i + 15}",
+    price: 5.99,
+    image_path: "http://www.hikashop.com/media/com_hikashop/upload/pdf.png"
+  )
 end
+
+User.create(
+  email: "user@example.com",
+  password: "password",
+  first_name: "first name",
+  last_name: "last name",
+  address: "address",
+  city: "city",
+  state: "state",
+  zip: "zip"
+)
+
+User.create(
+  email: "admin@example.com",
+  password: "password",
+  first_name: "first name",
+  last_name: "last name",
+  address: "address",
+  city: "city",
+  state: "state",
+  zip: "zip",
+  role: 1
+)

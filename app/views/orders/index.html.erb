@@ -1,16 +1,16 @@
-<h3 id="order-for">Order History</h3>
+<h4 class="order-for">Your Orders</h4>
 
 <table class="highlight">
     <tr>
-      <th>Item</th>
-      <th>Quantity</th>
-      <th>Cost</th>
+      <th>Order</th>
+      <th>Items</th>
+      <th>Total</th>
     </tr>
     <% @orders.each do |order|%>
     <tr>
-      <td><%= order.item.title %></td>
+      <td><%= link_to order.date, invoices_path(order_id: order.id) %></td>
       <td><%= order.quantity %></td>
-      <td><%= ((order.quantity) * (order.item.price)).round(2) %></td>
+      <td><%= order.total %></td>
     </tr>
   <% end %>
 </table>

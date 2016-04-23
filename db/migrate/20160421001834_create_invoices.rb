@@ -1,6 +1,6 @@
-class CreateOrders < ActiveRecord::Migration
+class CreateInvoices < ActiveRecord::Migration
   def change
-    create_table :orders do |t|
+    create_table :invoices do |t|
       t.references :user, index: true, foreign_key: true
       t.references :item, index: true, foreign_key: true
 

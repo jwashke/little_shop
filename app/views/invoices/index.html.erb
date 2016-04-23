@@ -1,0 +1,27 @@
+<h4 class="order-for">Invoice for <%= @order.date %></h4>
+
+<table class="highlight">
+    <tr>
+      <th>Item</th>
+      <th>Quantity</th>
+      <th>Cost</th>
+    </tr>
+    <% @invoices.each do |invoice|%>
+    <tr>
+      <td><%= invoice.item.title %></td>
+      <td><%= invoice.quantity %></td>
+      <td><%= ((invoice.quantity) * (invoice.item.price)).round(2) %></td>
+    </tr>
+  <% end %>
+</table>
+
+
+<table class="highlight">
+  <tr>
+    <th></th>
+  </tr>
+  <tr>
+    <td>Total: <%= @order.total %></td>
+    <td>Status: <%=@order.current_status %></td>
+  </tr>
+</table>
