@@ -4,12 +4,16 @@ class Item < ActiveRecord::Base
   validates :description, presence: true
   validates :price,       presence: true
   validates :image_path,  presence: true
-  has_many :orders
-  has_many :users, through: :orders
+  has_many  :orders
+  has_many  :users, through: :orders
 
   enum state: %w(active retired)
 
-  def retire
-    update(state: "retired")
+  def self.all_by_state
+    all.order(:state)
+  end
+
+  def self.all_by_id
+    all.order(:id)
   end
 end
