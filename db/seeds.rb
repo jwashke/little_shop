@@ -67,3 +67,11 @@ User.create(
   zip: "zip",
   role: 1
 )
+
+category_4.items.create(
+  title: "Item #{44}",
+  description: "Description #{44}",
+  price: 5.99,
+  image_path: "http://www.hikashop.com/media/com_hikashop/upload/pdf.png",
+  state: 1
+)

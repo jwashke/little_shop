@@ -4,6 +4,8 @@ class Item < ActiveRecord::Base
   validates :description, presence: true
   validates :price,       presence: true
   validates :image_path,  presence: true
-  has_many :invoices
-  has_many :users, through: :invoices
+  has_many :orders
+  has_many :users, through: :orders
+
+  enum state: %w(active retired)
 end
