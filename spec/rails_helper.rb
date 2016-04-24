@@ -82,6 +82,18 @@ def create_user
     zip: "zip")
 end
 
+def create_second_user
+  User.create(
+    email: "user2@example.com",
+    password: "password",
+    first_name: "first name",
+    last_name: "last name",
+    address: "address",
+    city: "city",
+    state: "state",
+    zip: "zip")
+end
+
 def create_admin
   User.create(
     email: "admin@example.com",
