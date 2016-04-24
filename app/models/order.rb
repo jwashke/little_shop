@@ -4,8 +4,8 @@ class Order < ActiveRecord::Base
 
   scope :ordered, -> { where(status: 0) }
   scope :paid, -> { where(status: 1) }
-  scope :completed, -> { where(status: 2) }
-  scope :cancelled, -> { where(status: 3) }
+  scope :cancelled, -> { where(status: 2) }
+  scope :completed, -> { where(status: 3) }
 
   enum status: %w(ordered paid cancelled completed)
 

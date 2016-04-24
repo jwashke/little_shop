@@ -32,7 +32,7 @@ RSpec.feature "Admin can change the state of an item" do
 
     find("a", text: "Item Retired").click
 
-    click_link("Cart")
+    click_link("shopping_cart")
     expect(current_path).to eq(cart_path)
 
     expect(page).not_to have_content(item.title)

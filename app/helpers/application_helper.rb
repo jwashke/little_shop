@@ -1,6 +1,7 @@
 module ApplicationHelper
   include CategoryHelper
   include ItemsHelper
+  include NavHelper
 
   def link_to_login_or_logout
     if current_user

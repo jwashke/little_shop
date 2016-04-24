@@ -17,7 +17,6 @@ FactoryGirl.define do
       end
       role 1
     end
-
   end
 
 
@@ -29,15 +28,16 @@ FactoryGirl.define do
     price 9.99
     image_path "example.jpg"
 
-    factory :retired_item do
+    factory :retired_item, class: :item do
       sequence :title do |n|
         "retired item #{n}"
       end
+      description "Some item"
+      price 9.99
+      image_path "example.jpg"
       state 1
     end
-
   end
-
 
   factory :order do
     factory :paid_order do
@@ -52,7 +52,6 @@ FactoryGirl.define do
       status 3
     end
   end
-
 
   factory :invoice do
     user

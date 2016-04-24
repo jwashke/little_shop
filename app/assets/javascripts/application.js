@@ -10,11 +10,11 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
-//= require jquery_ujs
+// = require jquery
+// = require jquery_ujs
 //= require_tree .
+//= require materialize-sprockets
 
-// Initialize collapse button
-// $(".button-collapse").sideNav();
-// Initialize collapsible (uncomment the line below if you use the dropdown variation)
-// $('.collapsible').collapsible();
+$(document).ready(function(){
+  $('.slider').slider({Default: 100});
+});
