@@ -52,7 +52,7 @@ RSpec.feature "User can view orders" do
 
   context "unregistered user cannot view orders" do
     scenario "is redirected to login when trying to view index" do
-      order = create(:order)
+      create(:order)
 
       visit orders_path
 
@@ -60,7 +60,7 @@ RSpec.feature "User can view orders" do
     end
 
     scenario "is redirected to login path when trying to view specific order" do
-      order = create(:order)
+      create(:order)
 
       visit order_path(order)
 
