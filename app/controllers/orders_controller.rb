@@ -19,6 +19,6 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @order = current_user.orders.find_by(id: params[:id]) or not_found
+    @order = current_user.orders.find_by(id: params[:id]) || not_found
   end
 end

@@ -46,7 +46,7 @@ RSpec.feature "User can view orders" do
       user = create(:user)
       ApplicationController.any_instance.stubs(:current_user).returns(user)
 
-      expect { visit order_path(order) }.to raise_error(ActionController::RoutingError)
+      expect{ visit order_path(order) }.to raise_error(ActionController::RoutingError)
     end
   end
 
