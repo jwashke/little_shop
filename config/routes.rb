@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
   get "/dashboard", to: "users#show"
+
   namespace :admin do
     get "/dashboard", to: "dashboard#show"
     patch "/items/:id/retire", to: "items#retire", as: :retire
@@ -19,5 +20,6 @@ Rails.application.routes.draw do
     resources :items, only: [:index]
     resources :orders, only: [:index, :update]
   end
+
   get "/:name", to: "categories#show", as: :category
 end
