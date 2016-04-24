@@ -6,5 +6,4 @@ class Invoice < ActiveRecord::Base
   def total
     item.price * quantity
   end
-
 end

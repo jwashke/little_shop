@@ -18,7 +18,7 @@ RSpec.describe "Cart" do
   describe ".total" do
     it "returns the total price of all items" do
       item = create(:item)
-      cart = Cart.new({ item.id => 1 })
+      cart = Cart.new(item.id => 1)
       expect(cart.total).to eq(9.99)
     end
   end
@@ -26,7 +26,7 @@ RSpec.describe "Cart" do
   describe ".all_items" do
     it "returns an array of cart items for each item" do
       item = create(:item)
-      cart = Cart.new({ item.id => 1 })
+      cart = Cart.new(item.id => 1)
       expect(cart.all_items.first.class).to eq(CartItems)
     end
   end
@@ -34,7 +34,7 @@ RSpec.describe "Cart" do
   describe ".delete_item" do
     it "deletes an item from the cart" do
       item = create(:item)
-      cart = Cart.new({ item.id.to_s => 1 })
+      cart = Cart.new(item.id.to_s => 1)
       cart.delete_item(item.id)
       expect(cart.contents).to eq({})
     end
@@ -43,9 +43,9 @@ RSpec.describe "Cart" do
   describe ".updated_item" do
     it "updated the quantity of an item in the cart" do
       item = create(:item)
-      cart = Cart.new({ item.id.to_s => 1 })
+      cart = Cart.new(item.id.to_s => 1)
       cart.update_item(item.id, 2)
-      expect(cart.contents).to eq({ item.id.to_s => 2 })
+      expect(cart.contents).to eq(item.id.to_s => 2)
     end
   end
 end

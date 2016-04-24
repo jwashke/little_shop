@@ -6,7 +6,7 @@ RSpec.describe InvoiceBuilder do
       order = create(:order)
       user = create(:user)
       item = create(:item)
-      cart = Cart.new({ item.id => 1 })
+      cart = Cart.new(item.id => 1)
       invoice_builder = InvoiceBuilder.new(cart, user, order)
       invoice_builder.create
       expect(Invoice.last.item).to eq(item)
@@ -16,7 +16,7 @@ RSpec.describe InvoiceBuilder do
       order = create(:order)
       user = create(:user)
       item = create(:item)
-      cart = Cart.new({ item.id => 1 })
+      cart = Cart.new(item.id => 1)
       invoice_builder = InvoiceBuilder.new(cart, user, order)
       invoice_builder.create
       expect(user.items.last).to eq(item)
