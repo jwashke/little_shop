@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.feature "User can register an account" do
   scenario "Their cart is saved" do
-    create_items
+    create_list(:item, 2)
 
     item_1 = Item.first
     item_2 = Item.last

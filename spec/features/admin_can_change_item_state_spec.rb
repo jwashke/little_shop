@@ -2,13 +2,12 @@ require "rails_helper"
 
 RSpec.feature "Admin can change the state of an item" do
   scenario "Admin can click retire next to an item" do
-    admin = create_admin
+    admin = create(:admin)
 
     ApplicationController.any_instance.stubs(:current_user).returns(admin)
-    create_one_item
+    item = create(:item)
     visit admin_dashboard_path
 
-    item = Item.last
     expect(item.state).to eq("active")
 
     click_on "Items"
@@ -39,10 +38,10 @@ RSpec.feature "Admin can change the state of an item" do
   end
 
   scenario "admin can reactivate retired item" do
-    admin = create_admin
+    admin = create(:admin)
 
     ApplicationController.any_instance.stubs(:current_user).returns(admin)
-    create_one_item
+    create(:item)
 
     Item.last.retired!
     item = Item.last

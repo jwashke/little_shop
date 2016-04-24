@@ -1,18 +1,21 @@
-class InvoiceBuilder
+class OrderBuilder
   attr_reader :cart, :current_user, :order
 
-  def initialize(cart, current_user, order)
+  def initialize(cart, order)
     @order = order
     @cart = cart
-    @current_user = current_user
   end
 
   def create
+    build_order_items_for_order
+    order.save
+  end
+
+  def build_order_items_for_order
     cart.contents.each do |item_id, quantity|
-      current_user.invoices.create(
+      order.order_items.create(
         item_id: item_id,
         quantity: quantity,
-        order_id: order.id
       )
     end
   end

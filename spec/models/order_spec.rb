@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Order, type: :model do
-  it { is_expected.to have_many(:invoices) }
+  it { is_expected.to have_many(:order_items) }
   it { is_expected.to have_many(:items) }
 
   describe ".ordered" do
@@ -55,8 +55,8 @@ RSpec.describe Order, type: :model do
   describe ".quantity" do
     it "returns the total quantity of items in the order" do
       order = create(:order)
-      order.invoices.create(quantity: 1)
-      order.invoices.create(quantity: 2)
+      order.order_items.create(quantity: 1)
+      order.order_items.create(quantity: 2)
       expect(order.quantity).to eq(3)
     end
   end
@@ -64,7 +64,7 @@ RSpec.describe Order, type: :model do
   describe ".total" do
     it "returns the total dollar amount of the order" do
       order = create(:order)
-      order.invoices = create_list(:invoice, 2)
+      order.order_items = create_list(:order_item, 2)
       expect(order.total).to eq(19.98)
     end
   end

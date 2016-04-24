@@ -40,6 +40,8 @@ FactoryGirl.define do
   end
 
   factory :order do
+    user
+
     factory :paid_order do
       status 1
     end
@@ -53,10 +55,9 @@ FactoryGirl.define do
     end
   end
 
-  factory :invoice do
-    user
+  factory :order_item do
     item
-    quantity 1
     order
+    quantity 1
   end
 end
