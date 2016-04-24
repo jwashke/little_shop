@@ -94,4 +94,52 @@ RSpec.describe Order, type: :model do
       expect(order.status).to eq("cancelled")
     end
   end
+
+  describe "ordered" do
+    it "should return true when asked if status is ordered" do
+      order = create(:order)
+      expect(order.ordered?).to be(true)
+    end
+
+    it "should return false when asked if different status" do
+      order = create(:order)
+      expect(order.paid?).to be(false)
+    end
+  end
+
+  describe "paid" do
+    it "should return true when asked if paid order" do
+      order = create(:paid_order)
+      expect(order.paid?).to be(true)
+    end
+
+    it "should return false when asked if different status" do
+      order = create(:paid_order)
+      expect(order.ordered?).to be(false)
+    end
+  end
+
+  describe "cancelled" do
+    it "should return true when asked if cancelled order" do
+      order = create(:cancelled_order)
+      expect(order.cancelled?).to be(true)
+    end
+
+    it "should return false when asked if different status" do
+      order = create(:cancelled_order)
+      expect(order.ordered?).to be(false)
+    end
+  end
+
+  describe "completed" do
+    it "should return true when asked if completed order" do
+      order = create(:completed_order)
+      expect(order.completed?).to be(true)
+    end
+
+    it "should return false when asked if different status" do
+      order = create(:completed_order)
+      expect(order.ordered?).to be(false)
+    end
+  end
 end
