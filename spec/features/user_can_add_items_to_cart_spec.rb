@@ -17,7 +17,7 @@ RSpec.feature "User can add an item to their cart" do
 
     expect(current_path).to eq(items_path)
 
-    click_link "Cart"
+    click_link("shopping_cart")
 
     expect(current_path).to eq(cart_path)
 
@@ -34,7 +34,7 @@ RSpec.feature "User can add an item to their cart" do
     within(".card-#{item_2.id}") do
       click_button("Add to Cart")
     end
-    click_link "Cart"
+    click_link("shopping_cart")
 
     expect(current_path).to eq(cart_path)
     within("li.collection-item:nth-child(1)") do

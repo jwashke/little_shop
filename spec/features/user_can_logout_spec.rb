@@ -26,7 +26,7 @@ RSpec.feature "User can logout" do
     expect(page).not_to have_content("Logout")
 
     within(".nav-wrapper") do
-      click_link("Cart")
+      click_link("shopping_cart")
     end
 
     expect(page).not_to have_content("#{item.title}")

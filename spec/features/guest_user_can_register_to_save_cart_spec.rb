@@ -18,7 +18,7 @@ RSpec.feature "User can register an account" do
     end
 
     within(".nav-wrapper") do
-      click_link("Cart")
+      click_link("shopping_cart")
     end
 
     click_button("Create Account to Checkout")
@@ -36,7 +36,7 @@ RSpec.feature "User can register an account" do
     end
 
     within(".nav-wrapper") do
-      click_link("Cart")
+      click_link("shopping_cart")
     end
 
     expect(page).to have_content("#{item_1.title}")

@@ -27,4 +27,8 @@ class Cart
   def update_item(item_id, quantity)
     contents[item_id.to_s] = quantity
   end
+
+  def number_of_items
+    contents.values.reduce(:+)
+  end
 end
