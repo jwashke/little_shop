@@ -2,6 +2,12 @@ class Order < ActiveRecord::Base
   has_many :invoices
   has_many :items, through: :invoices
 
+  scope :ordered, -> { where(status: 0) }
+  scope :paid, -> { where(status: 1) }
+  scope :completed, -> { where(status: 2) }
+  scope :cancelled, -> { where(status: 3) }
+
+
   def quantity
     invoices.sum(:quantity)
   end
@@ -17,5 +23,16 @@ class Order < ActiveRecord::Base
     status
   end
 
-  enum status: %w(Ordered Paid Cancelled Completed)
+  def cycle_status
+    if ordered?
+      paid!
+    elsif paid?
+      completed!
+    end
+  end
+
+  def cancel
+  end
+
+  enum status: %w(ordered paid cancelled completed)
 end

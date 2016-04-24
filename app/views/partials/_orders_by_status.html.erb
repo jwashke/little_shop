@@ -1,0 +1,19 @@
+<table class="highlight orders">
+    <tr>
+      <th>id</th>
+      <th>Created at</th>
+      <th>Updated at</th>
+      <th>Current Status</th>
+      <th></th>
+    </tr>
+    <% orders.each do |order|%>
+    <tr>
+      <td><%= order.id %></td>
+      <td><%= order.created_at %></td>
+      <td><%= order.updated_at %></td>
+      <td><%= order.status %></td>
+      <td><%= button_to_mark_order_completed(order) %></td>
+      <td><%= button_to_cancel_order(order) %></td>
+    </tr>
+  <% end %>
+</table>
