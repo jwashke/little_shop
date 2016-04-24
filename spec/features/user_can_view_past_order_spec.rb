@@ -13,6 +13,6 @@ RSpec.feature "User can view past order" do
     expect(page).to have_content "Item 1"
     expect(page).to have_content "Item 2"
     expect(page).to have_content "15.98"
-    expect(page).to have_content "Status: Ordered"
+    expect(page).to have_content "Status: ordered"
   end
 end
