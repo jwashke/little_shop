@@ -8,7 +8,7 @@
     </tr>
     <% @orders.each do |order|%>
     <tr>
-      <td><%= link_to order.date, invoices_path(order_id: order.id) %></td>
+      <td><%= link_to order.id, invoices_path(order_id: order.id) %></td>
       <td><%= order.quantity %></td>
       <td><%= order.total %></td>
     </tr>

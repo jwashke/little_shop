@@ -7,32 +7,18 @@ class Order < ActiveRecord::Base
   scope :completed, -> { where(status: 2) }
   scope :cancelled, -> { where(status: 3) }
 
+  enum status: %w(ordered paid cancelled completed)
 
   def quantity
     invoices.sum(:quantity)
   end
 
   def total
-    invoices.inject(0) do |acc, invoice|
-      acc + (invoice.item.price * invoice.quantity)
-      # maybe create a total within each invoice, makes this easier
-    end
-  end
-
-  def current_status
-    status
+    invoices.inject(0) { |sum, invoice| sum + invoice.total }
   end
 
   def cycle_status
-    if ordered?
-      paid!
-    elsif paid?
-      completed!
-    end
+    return paid! if ordered?
+    return completed! if paid?
   end
-
-  def cancel
-  end
-
-  enum status: %w(ordered paid cancelled completed)
 end

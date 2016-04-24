@@ -10,9 +10,7 @@ class Cart
   end
 
   def total
-    all_items.inject(0) do |sum, item|
-      sum + item.price
-    end.round(2)
+    all_items.inject(0) { |sum, item| sum + item.price }.round(2)
   end
 
   def all_items

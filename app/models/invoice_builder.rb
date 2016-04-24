@@ -1,4 +1,4 @@
-class InvoiceCreation
+class InvoiceBuilder
   attr_reader :cart, :current_user, :order
 
   def initialize(cart, current_user, order)

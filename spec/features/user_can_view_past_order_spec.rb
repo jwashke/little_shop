@@ -4,15 +4,14 @@ RSpec.feature "User can view past order" do
   scenario "They can click and see invoice breakdown" do
     user = create_user
 
-    create_orders
+    order = create(:invoice).order
 
     ApplicationController.any_instance.stubs(:current_user).returns(user)
 
     visit orders_path
-    click_on "04/21/2016"
-    expect(page).to have_content "Item 1"
-    expect(page).to have_content "Item 2"
-    expect(page).to have_content "15.98"
+    click_on order.id
+    expect(page).to have_content order.items.first.title
+    expect(page).to have_content order.items.first.price
     expect(page).to have_content "Status: ordered"
   end
 end
