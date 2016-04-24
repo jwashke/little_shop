@@ -2,8 +2,8 @@ class InvoicesController < ApplicationController
   before_action :require_login, only: [:index]
 
   def create
-    order = Order.create(date: Time.now.strftime("%m/%d/%Y"))
-    invoices = InvoiceCreation.new(@cart, current_user, order)
+    order = Order.create
+    invoices = InvoiceBuilder.new(@cart, current_user, order)
     invoices.create
     session[:cart] = {}
     flash[:notice] = "Order was successfully placed"
