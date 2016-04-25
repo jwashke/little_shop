@@ -2,13 +2,12 @@ require "rails_helper"
 
 RSpec.feature "User can only view their orders" do
   scenario "their order history reflects appropriately" do
-    create_user
-    create_second_user
-    create_items
+    user = create(:user)
+    create_list(:item, 2)
     visit login_path
 
     within("#login-form") do
-      fill_in :Email, with: "user@example.com"
+      fill_in :Email, with: user.email
       fill_in :Password, with: "password"
     end
     click_button "Login"

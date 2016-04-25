@@ -14,7 +14,8 @@ RSpec.describe User, type: :model do
   end
 
   describe "associations" do
-    it { is_expected.to have_many(:invoices) }
+    it { is_expected.to have_many(:orders) }
+    it { is_expected.to have_many(:order_items) }
     it { is_expected.to have_many(:items) }
   end
 

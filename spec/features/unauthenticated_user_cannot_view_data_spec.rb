@@ -2,12 +2,12 @@ require "rails_helper"
 
 RSpec.feature "Unauth user cannot view current order" do
   scenario "they are redirected to login" do
-    user = create_user
-    create_items
+    user = create(:user)
+    create_list(:item, 2)
     visit login_path
 
     within("#login-form") do
-      fill_in :Email, with: "user@example.com"
+      fill_in :Email, with: user.email
       fill_in :Password, with: "password"
     end
     click_button "Login"
@@ -19,13 +19,13 @@ RSpec.feature "Unauth user cannot view current order" do
 
     visit cart_path
 
-    expect(page).to have_content "Item 1"
+    expect(page).to have_content item_1.title
 
     click_on "Logout"
 
     visit cart_path
 
-    expect(page).not_to have_content "Item 1"
+    expect(page).not_to have_content item_1.title
 
     visit orders_path
     expect(page).to have_content("Enter your information to login")

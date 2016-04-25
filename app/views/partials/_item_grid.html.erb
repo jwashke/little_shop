@@ -1,7 +1,7 @@
 <div class="col s12 m8 l9">
   <div class="row">
     <% @items.each do |item| %>
-      <div class="col s12 m6 l4">
+      <div class="col s12 m6">
         <div class="card card-<%= item.id %> hoverable">
           <div class="card-image waves-effect waves-block waves-light">
             <%= image_tag(item.image_path, class: "activator")%>
