@@ -16,6 +16,7 @@ class Admin::ItemsController < Admin::BaseController
   end
 
   def new
+    @categories = Category.all
     @item = Item.new
   end
 
