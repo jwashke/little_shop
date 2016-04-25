@@ -2,12 +2,10 @@ require "rails_helper"
 
 RSpec.feature "User can update quantity of items in cart" do
   scenario "they stay on the cart page and see updated quantity of items" do
-    create(:item)
-    item = Item.last
-    id = Item.last.id
+    item = create(:item)
     visit items_path
 
-    within(".card-#{id}") do
+    within(".card-#{item.id}") do
       click_button("Add to Cart")
     end
 

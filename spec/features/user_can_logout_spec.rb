@@ -3,8 +3,7 @@ require "rails_helper"
 RSpec.feature "User can logout" do
   scenario "He sees the login link and an empty cart" do
     user = create(:user)
-    create(:item)
-    item = Item.first
+    item = create(:item)
 
     visit login_path
 
