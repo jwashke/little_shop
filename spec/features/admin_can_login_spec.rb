@@ -2,21 +2,11 @@ require "rails_helper"
 
 RSpec.feature "Admin can login" do
   scenario "and be taken to the admin dashboard" do
-    User.create(
-      email: "admin@example.com",
-      password: "password",
-      first_name: "first name",
-      last_name: "last name",
-      address: "address",
-      city: "city",
-      state: "state",
-      zip: "zip",
-      role: 1
-    )
+    admin = create(:admin)
     visit login_path
 
     within("#login-form") do
-      fill_in :Email, with: "admin@example.com"
+      fill_in :Email, with: admin.email
       fill_in :Password, with: "password"
       click_button("Login")
     end

@@ -2,13 +2,13 @@ require "rails_helper"
 
 RSpec.feature "Admin can change status of an order" do
   scenario "admin can see total orders for each status" do
-    admin = create_admin
+    admin = create(:admin)
 
     ApplicationController.any_instance.stubs(:current_user).returns(admin)
 
     visit admin_dashboard_path
 
-    create_orders
+    create(:order)
 
     click_link("Orders")
 
@@ -35,14 +35,13 @@ RSpec.feature "Admin can change status of an order" do
   end
 
   scenario "admin can filter orders by each status" do
-    admin = create_admin
+    admin = create(:admin)
 
     ApplicationController.any_instance.stubs(:current_user).returns(admin)
 
     visit admin_dashboard_path
 
-    create_orders
-    order = Order.last
+    order = create(:order)
     click_link("Orders")
 
     within(".ordered-tab") do
@@ -54,16 +53,15 @@ RSpec.feature "Admin can change status of an order" do
   end
 
   scenario "admin can mark an ordered order as paid" do
-    admin = create_admin
+    admin = create(:admin)
 
     ApplicationController.any_instance.stubs(:current_user).returns(admin)
 
     visit admin_dashboard_path
 
-    create_orders
+    order = create(:order)
     click_link("Orders")
 
-    order = Order.last
     expect(order.status).to eq ("ordered")
     within("#all") do
       click_link("Mark as Paid")
@@ -74,13 +72,11 @@ RSpec.feature "Admin can change status of an order" do
   end
 
   scenario "admin can mark a paid order as completed" do
-    admin = create_admin
+    admin = create(:admin)
 
     ApplicationController.any_instance.stubs(:current_user).returns(admin)
 
-    create_orders
-    Order.last.paid!
-    order = Order.last
+    order = create(:paid_order)
 
     visit admin_dashboard_path
     click_link("Orders")
@@ -96,13 +92,11 @@ RSpec.feature "Admin can change status of an order" do
   end
 
   scenario "admin can cancel an order that is paid" do
-    admin = create_admin
+    admin = create(:admin)
 
     ApplicationController.any_instance.stubs(:current_user).returns(admin)
 
-    create_orders
-    Order.last.paid!
-    order = Order.last
+    order = create(:paid_order)
 
     visit admin_dashboard_path
     click_link("Orders")
@@ -117,13 +111,11 @@ RSpec.feature "Admin can change status of an order" do
   end
 
   scenario "admin can cancel an order that is ordered" do
-    admin = create_admin
+    admin = create(:admin)
 
     ApplicationController.any_instance.stubs(:current_user).returns(admin)
 
-    create_orders
-    Order.last.ordered!
-    order = Order.last
+    order = create(:order)
 
     visit admin_dashboard_path
     click_link("Orders")

@@ -10,8 +10,8 @@ class User < ActiveRecord::Base
   validates :state, presence: true
   validates :zip, presence: true
   has_many :orders
-  has_many :invoices
-  has_many :items, through: :invoices
+  has_many :order_items, through: :orders
+  has_many :items, through: :order_items
 
   enum role: %w(default admin)
 end

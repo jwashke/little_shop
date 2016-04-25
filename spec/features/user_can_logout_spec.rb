@@ -2,15 +2,14 @@ require "rails_helper"
 
 RSpec.feature "User can logout" do
   scenario "He sees the login link and an empty cart" do
-    create_user
-    create_items
-    item = Item.first
+    user = create(:user)
+    item = create(:item)
 
     visit login_path
 
     within("#login-form") do
-      fill_in :Email, with: "user@example.com"
-      fill_in :Password, with: "password"
+      fill_in :Email, with: user.email
+      fill_in :Password, with: user.password
       click_button("Login")
     end
 

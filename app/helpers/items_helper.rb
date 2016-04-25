@@ -1,7 +1,7 @@
 module ItemsHelper
   def checkout_or_create_account_button
     if current_user
-      button_to "Checkout", invoices_path, class: "waves-effect waves-light btn"
+      button_to "Checkout", orders_path, class: "waves-effect waves-light btn"
     else
       button_to "Create Account to Checkout",
                 login_path,

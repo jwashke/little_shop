@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.feature "User can add an item to their cart" do
   scenario "they see the contents" do
-    create_items
+    create_list(:item, 2)
 
     item_1 = Item.first
     item_2 = Item.last
@@ -22,10 +22,9 @@ RSpec.feature "User can add an item to their cart" do
     expect(current_path).to eq(cart_path)
 
     within("ul.collection:nth-child(1)") do
-      expect(page).to have_content("Item 1")
-      expect(page).to have_content("9.99")
-      expect(page).to have_content("This is the first item")
-      expect(page).to have_css("img[src=\"/images/example.image\"]")
+      expect(page).to have_content(item_1.title)
+      expect(page).to have_content(item_1.price)
+      expect(page).to have_content(item_1.description)
     end
     expect(page).to have_content("Total: 9.99")
 
@@ -38,17 +37,15 @@ RSpec.feature "User can add an item to their cart" do
 
     expect(current_path).to eq(cart_path)
     within("li.collection-item:nth-child(1)") do
-      expect(page).to have_content("Item 1")
-      expect(page).to have_content("9.99")
-      expect(page).to have_content("This is the first item")
-      expect(page).to have_css("img[src=\"/images/example.image\"]")
+      expect(page).to have_content(item_1.title)
+      expect(page).to have_content(item_1.price)
+      expect(page).to have_content(item_1.description)
     end
     within("li.collection-item:nth-child(2)") do
-      expect(page).to have_content("Item 2")
-      expect(page).to have_content("5.99")
-      expect(page).to have_content("This is the second item")
-      expect(page).to have_css("img[src=\"/images/example.image/2\"]")
+      expect(page).to have_content(item_2.title)
+      expect(page).to have_content(item_2.price)
+      expect(page).to have_content(item_2.description)
     end
-    expect(page).to have_content("Total: 15.98")
+    expect(page).to have_content("Total: 19.98")
   end
 end

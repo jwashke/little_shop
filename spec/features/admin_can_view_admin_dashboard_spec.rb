@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.feature "User can visit admin dashboard" do
   scenario "Admin can see admin dashboard" do
-    admin = create_admin
+    admin = create(:admin)
 
     ApplicationController.any_instance.stubs(:current_user).returns(admin)
 
@@ -12,7 +12,7 @@ RSpec.feature "User can visit admin dashboard" do
   end
 
   scenario "registered non admin user sees 404" do
-    user = create_user
+    user = create(:user)
 
     ApplicationController.any_instance.stubs(:current_user).returns(user)
 
