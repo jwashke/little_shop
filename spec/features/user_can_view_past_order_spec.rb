@@ -2,7 +2,6 @@ require "rails_helper"
 
 RSpec.feature "User can view past order" do
   scenario "They can click and see invoice breakdown" do
-
     order_item = create(:order_item)
     order = order_item.order
     user = order.user
