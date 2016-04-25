@@ -33,6 +33,7 @@ gem 'unicorn'
 gem 'materialize-sass'
 gem 'paperclip'
 gem 'aws-sdk', '< 2.0'
+gem 'formtastic', '~> 3.0'
 
 
 group :development, :test do

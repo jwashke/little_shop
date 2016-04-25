@@ -4,6 +4,7 @@ class Item < ActiveRecord::Base
   validates :description, presence: true
   validates :price,       presence: true
   # validates :image_path,  presence: true
+  has_attached_file :file
   has_attached_file :avatar, styles: {
     thumb: '100x100>',
     large: '570x570>'

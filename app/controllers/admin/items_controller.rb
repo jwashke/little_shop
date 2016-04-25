@@ -29,12 +29,11 @@ class Admin::ItemsController < Admin::BaseController
       flash[:notice] = "Something went wrong"
       render :new
     end
-
   end
 
   private
 
   def item_params
-    params.require(:item).permit(:title, :description, :price, :avatar)
+    params.require(:item).permit(:title, :description, :price, :avatar, :file, :category_id)
   end
 end

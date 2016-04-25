@@ -5,6 +5,9 @@
     <%= f.text_field :title %>
   </div>
   <div class="input-field">
+     <%= f.collection_select :category_id, Category.all, :id, :name, { prompt: "Choose a category" }, class: "browser-default" %>
+  </div>
+  <div class="input-field">
     <%= f.label :price %>
     <%= f.text_field :price %>
   </div>
@@ -14,6 +17,8 @@
   </div>
     <%= f.label :avatar %>
     <%= f.file_field :avatar %>
+    <%= f.label :file %>
+    <%= f.file_field :file %>
   <div class="input-field">
 
   </div>
