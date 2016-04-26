@@ -1,0 +1,18 @@
+<%= form_for([:admin, @item], multiport: true) do |f| %>
+<div class="input-field">
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+</div>
+<div class="input-field">
+  <%= f.label :price %>
+  <%= f.text_field :price %>
+</div>
+  <div class="input-field">
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+</div>
+<div class="input-field">
+  <%= f.file_field :avatar %>
+</div>
+<%= f.submit %>
+<% end %>

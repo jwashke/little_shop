@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     patch "/items/:id/retire", to: "items#retire", as: :retire
     patch "/items/:id/activate", to: "items#activate", as: :activate
     patch "/orders/:id/cancel", to: "orders#cancel", as: :cancel
-    resources :items, only: [:index]
+    resources :items, only: [:index, :new, :create]
     resources :orders, only: [:index, :update]
   end
 
