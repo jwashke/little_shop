@@ -4,6 +4,6 @@ class ItemSender < ApplicationMailer
     @order = order
     @user  = user
     @items = @order.items
-    mail(to: @user.email, subject: 'Purchased Goods')
+    mail(to: @user.email, subject: 'Here is your Order!')
   end
 end
