@@ -89,6 +89,7 @@ RSpec.feature "Admin can change status of an order" do
     order = Order.last
 
     expect(order.status).to eq("completed")
+    ActionMailer::Base.deliveries.clear
   end
 
   scenario "admin can cancel an order that is paid" do
@@ -127,5 +128,22 @@ RSpec.feature "Admin can change status of an order" do
 
     order = Order.last
     expect(order.status).to eq ("cancelled")
+  end
+
+  scenario "admin can send email by changing status to completed" do
+    admin = create(:admin)
+
+    ApplicationController.any_instance.stubs(:current_user).returns(admin)
+
+    order = create(:paid_order)
+
+    visit admin_dashboard_path
+    click_link("Orders")
+
+    within("#all") do
+      click_link("Mark as Completed")
+    end
+    expect(ActionMailer::Base.deliveries.count).to eq 1
+    ActionMailer::Base.deliveries.clear
   end
 end
