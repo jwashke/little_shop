@@ -7,7 +7,7 @@ class Admin::OrdersController < Admin::BaseController
     @order = Order.find(params[:id])
     @order.cycle_status
     if @order.completed?
-      ItemSender.send_order(@order.user, @order).deliver
+      ItemSender.send_order(@order.user, @order).deliver_now
     end
     redirect_to admin_orders_path
   end
