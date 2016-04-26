@@ -135,7 +135,7 @@ RSpec.feature "Admin can change status of an order" do
 
     ApplicationController.any_instance.stubs(:current_user).returns(admin)
 
-    order = create(:paid_order)
+    create(:paid_order)
 
     visit admin_dashboard_path
     click_link("Orders")
