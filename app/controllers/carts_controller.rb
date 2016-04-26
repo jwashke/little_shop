@@ -11,10 +11,6 @@ class CartsController < ApplicationController
     @cart.delete_item(@item.id)
     session[:cart] = @cart.contents
 
-    link = view_context.link_to("Put one back?",
-                                cart_path(item_id: @item.id),
-                                method: :post)
-
     flash[:notice] = %[Removed #{@item.title} from cart. #{link}]
 
     redirect_to cart_path
@@ -27,10 +23,18 @@ class CartsController < ApplicationController
     @cart.update_item(params[:item_id], params[:quantity].to_i)
     render :show
   end
-end
 
 private
 
-def set_item
-  @item = Item.find(params[:item_id])
+  def set_item
+    @item = Item.find(params[:item_id])
+  end
+
+  def link
+    view_context.link_to(
+      "Put one back?",
+      cart_path(item_id: @item.id),
+      method: :post
+    )
+  end
 end
