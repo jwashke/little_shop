@@ -35,7 +35,7 @@ RSpec.configure do |config|
   #     RSpec.describe UsersController, :type => :controller do
   #       # ...
   #     end
- config.before(:each) do
+  config.before(:each) do
     Paperclip::Attachment.any_instance.stubs(:save).returns(true)
   end
   # The different available types are documented in the features, such as in
