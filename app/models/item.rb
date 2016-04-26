@@ -5,10 +5,7 @@ class Item < ActiveRecord::Base
   validates :price,       presence: true
   # validates :image_path,  presence: true
   has_attached_file :file
-  has_attached_file :avatar, styles: {
-    thumb: '100x100>',
-    large: '570x570>'
-  }
+  has_attached_file :avatar
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
   enum state: %w(active retired)

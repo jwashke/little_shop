@@ -26,7 +26,7 @@ class Admin::ItemsController < Admin::BaseController
     if @item.save
       redirect_to admin_items_path
     else
-      flash[:notice] = "Something went wrong"
+      flash[:notice] = @item.errors.full_messages.join(", ")
       render :new
     end
   end
