@@ -7,7 +7,6 @@ RSpec.feature "Admin can visit item creation page" do
     ApplicationController.any_instance.stubs(:current_user).returns(admin)
 
     visit new_admin_item_path
-
     fill_in :Title, with: "Test Item"
     fill_in :Price, with: "5.99"
     fill_in :Description, with: "THIS IS AN ITEM"

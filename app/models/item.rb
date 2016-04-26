@@ -1,8 +1,8 @@
 class Item < ActiveRecord::Base
-  validates :title,       presence: true,
+  validates :title,         presence: true,
                           uniqueness: true
-  validates :description, presence: true
-  validates :price,       presence: true
+  validates :description,   presence: true
+  validates :price,         presence: true
   has_attached_file :file
   has_attached_file :avatar
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
