@@ -7,6 +7,7 @@ class OrdersController < ApplicationController
     if order_builder.create
       session[:cart] = {}
       flash[:notice] = "Order was successfully placed"
+      PurchaseMailer.sample_email(current_user).deliver
       redirect_to orders_path
     else
       flash[:notice] = "Something went wrong"
