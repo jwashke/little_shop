@@ -19,6 +19,21 @@ RSpec.feature "Admin can visit item creation page" do
     expect(page).to have_content("5.99")
   end
 
+  scenario "Admin sees error messages when field is left blank" do
+    admin = create(:admin)
+
+    ApplicationController.any_instance.stubs(:current_user).returns(admin)
+
+    visit new_admin_item_path
+    fill_in :Price, with: "5.99"
+    fill_in :Description, with: "THIS IS AN ITEM"
+    attach_file "File", "spec/asset_specs/photos/photo.jpg"
+    attach_file "Avatar", "spec/asset_specs/photos/photo.jpg"
+    click_button "Create Item"
+
+    expect(page).to have_content("Title can't be blank")
+  end
+
   scenario "non admin user visits page and gets 404" do
     user = create(:user)
 
