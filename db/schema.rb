@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160427205227) do
+ActiveRecord::Schema.define(version: 20160427230748) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,15 +43,6 @@ ActiveRecord::Schema.define(version: 20160427205227) do
 
   add_index "items", ["category_id"], name: "index_items_on_category_id", using: :btree
 
-  create_table "o_auth_users", force: :cascade do |t|
-    t.string  "provider"
-    t.string  "name"
-    t.string  "email"
-    t.integer "user_id"
-  end
-
-  add_index "o_auth_users", ["user_id"], name: "index_o_auth_users_on_user_id", using: :btree
-
   create_table "order_items", force: :cascade do |t|
     t.integer "order_id"
     t.integer "item_id"
@@ -75,17 +66,12 @@ ActiveRecord::Schema.define(version: 20160427205227) do
     t.string   "password_digest"
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "address"
-    t.string   "city"
-    t.string   "state"
-    t.string   "zip"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
     t.integer  "role",            default: 0
   end
 
   add_foreign_key "items", "categories"
-  add_foreign_key "o_auth_users", "users"
   add_foreign_key "order_items", "items"
   add_foreign_key "order_items", "orders"
   add_foreign_key "orders", "users"
