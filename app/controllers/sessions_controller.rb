@@ -1,18 +1,34 @@
 class SessionsController < ApplicationController
   def create
-    @user = User.find_by(email: params[:session][:email])
-    if @user && @user.authenticate(params[:session][:password])
+    if auth_hash.present?
+      @user = OAuthUser.where(
+        provider: auth_hash[:provider],
+        name:     auth_hash[:info][:nickname],
+        email:    auth_hash[:info][:email]
+      ).first_or_create
       session[:user_id] = @user.id
-      flash[:notice] = "Successfully Logged in as #{@user.first_name}"
-      redirect_based_on_role
+      flash[:notice] = "Successfully Logged in as #{@user.nickname}"
     else
-      redirect_to login_path
+      @user = RegularUser.find_by(email: params[:session][:email])
+      if @user && @user.authenticate(params[:session][:password])
+        session[:user_id] = @user.id
+        flash[:notice] = "Successfully Logged in as #{@user.first_name}"
+        redirect_based_on_role
+      else
+        redirect_to login_path
+      end
     end
   end
 
   def destroy
     session.clear
     redirect_to root_path
+  end
+
+  def oauth_create
+    binding.pry
+    @all_info = request.env["omniauth.auth"]
+    @user = User.find_or_create_by()
   end
 
   private
@@ -23,5 +39,9 @@ class SessionsController < ApplicationController
     else
       redirect_to dashboard_path
     end
+  end
+
+  def auth_hash
+    request.env["omniauth.auth"]
   end
 end
