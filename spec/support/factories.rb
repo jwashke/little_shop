@@ -5,11 +5,6 @@ FactoryGirl.define do
     end
     password "password"
     first_name "Jon"
-    last_name "Doe"
-    address "123 Fake Street"
-    city "faketown"
-    state "CA"
-    zip "92504"
 
     factory :admin do
       sequence :email do |n|

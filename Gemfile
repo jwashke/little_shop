@@ -34,6 +34,9 @@ gem 'materialize-sass'
 gem 'paperclip'
 gem 'aws-sdk', '< 2.0'
 gem 'formtastic', '~> 3.0'
+gem 'omniauth-oauth2'
+gem 'omniauth-github'
+gem 'figaro'
 
 
 group :development, :test do

@@ -27,11 +27,6 @@ RSpec.feature "User can register an account" do
       fill_in :Email, with: "user@example.com"
       fill_in :Password, with: "password"
       fill_in "First name", with: "Josh"
-      fill_in "Last name", with: "Josh"
-      fill_in :Address, with: "fake address"
-      fill_in :City, with: "Denver"
-      fill_in :State, with: "Colorado"
-      fill_in :Zip, with: "80123"
       click_button("Create Account")
     end
 
