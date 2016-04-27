@@ -17,7 +17,6 @@ module OrdersHelper
     if order.cancelled?
       link_to "cancel order",
       "#",
-      method: :patch,
       class: "waves-effect waves-light btn disabled"
     else
       link_to "cancel order",

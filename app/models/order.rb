@@ -23,4 +23,12 @@ class Order < ActiveRecord::Base
     return paid! if ordered?
     return completed! if paid?
   end
+
+  def updated_time
+    updated_at.strftime("%b %e, %l:%M %p")
+  end
+
+  def created_time
+    created_at.strftime("%b %e, %l:%M %p")
+  end
 end

@@ -1,4 +1,4 @@
-<h4 class="order-for">Order #<%= @order.id %> created at <%= @order.created_at %></h4>
+<h5 class="order-for">Order #<%= @order.id %> created at <%= @order.created_time %></h5>
 
 <table class="highlight">
     <tr>
@@ -15,7 +15,7 @@
     <% end %>
     <tr>
       <td>Order Status: <%= @order.status %></td>
-      <td>Last Updated: <%= @order.updated_at %></td>
+      <td>Last Updated: <%= @order.updated_time %></td>
       <td>Total: <%= @order.total %></td>
     </tr>
 </table>
