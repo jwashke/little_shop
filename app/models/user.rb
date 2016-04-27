@@ -4,14 +4,24 @@ class User < ActiveRecord::Base
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true
   validates :first_name, presence: true
-  validates :last_name, presence: true
-  validates :address, presence: true
-  validates :city, presence: true
-  validates :state, presence: true
-  validates :zip, presence: true
   has_many  :orders
   has_many  :order_items, through: :orders
   has_many  :items, through: :order_items
 
   enum role: %w(default admin)
+
+  def self.o_auth_find_or_create_by(auth_hash)
+    user = where(
+      email: auth_hash[:info][:email],
+      first_name: auth_hash[:info][:nickname],
+    ).first
+    if user.nil?
+      user = create(
+      email: auth_hash[:info][:email],
+      first_name: auth_hash[:info][:nickname],
+      password: rand(1..10000).to_s
+    )
+    end
+    user
+  end
 end
