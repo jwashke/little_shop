@@ -4,12 +4,12 @@ module OrdersHelper
       link_to "Mark as Paid",
               admin_order_path(order),
               method: :patch,
-              class: "waves-effect waves-light btn"
+              class: "waves-effect waves-light btn completed-btn"
     elsif order.paid?
       link_to "Mark as Completed",
               admin_order_path(order),
               method: :patch,
-              class: "waves-effect waves-light btn"
+              class: "waves-effect waves-light btn completed-btn"
     end
   end
 
