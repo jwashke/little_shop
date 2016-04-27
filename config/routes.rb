@@ -19,6 +19,8 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :new, :create]
     resources :orders, only: [:index, :update]
   end
-
+  
+  get '/auth/github', as: :github_login
+  get '/auth/github/callback', to: 'sessions#create'
   get "/:name", to: "categories#show", as: :category
 end

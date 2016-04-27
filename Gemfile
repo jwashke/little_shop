@@ -30,10 +30,13 @@ gem 'unicorn'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'omniauth-oauth2'
 gem 'materialize-sass'
 gem 'paperclip'
 gem 'aws-sdk', '< 2.0'
 gem 'formtastic', '~> 3.0'
+gem 'figaro'
+gem 'omniauth-github'
 
 
 group :development, :test do
@@ -48,6 +51,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'database_cleaner'
   gem 'faker'
+  gem 'dotenv-rails'
 end
 
 group :development do
