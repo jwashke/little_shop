@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.feature "Admin can visit item edit page" do
   scenario "Admin can edit an item" do
     admin = create(:admin)
-    item = create(:item)
+    create(:item)
     ApplicationController.any_instance.stubs(:current_user).returns(admin)
 
     visit admin_items_path
