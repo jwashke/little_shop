@@ -49,7 +49,7 @@ RSpec.feature "Admin can change status of an order" do
     end
 
     expect(page).to have_content(order.id)
-    expect(page).to have_content(order.updated_at)
+    expect(page).to have_content(order.updated_time)
   end
 
   scenario "admin can mark an ordered order as paid" do

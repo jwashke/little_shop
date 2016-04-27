@@ -9,14 +9,14 @@ Rails.application.routes.draw do
   get "/login", to: "users#new"
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
-  get "/dashboard", to: "users#show"
+  get "/dashboard", to: "orders#index"
 
   namespace :admin do
     get "/dashboard", to: "dashboard#show"
     patch "/items/:id/retire", to: "items#retire", as: :retire
     patch "/items/:id/activate", to: "items#activate", as: :activate
     patch "/orders/:id/cancel", to: "orders#cancel", as: :cancel
-    resources :items, only: [:index, :new, :create]
+    resources :items, only: [:index, :new, :create, :edit, :update]
     resources :orders, only: [:index, :update]
   end
 

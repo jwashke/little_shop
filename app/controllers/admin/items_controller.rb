@@ -1,16 +1,16 @@
 class Admin::ItemsController < Admin::BaseController
+  before_action :set_item, only: [:retire, :activate, :edit, :update]
+
   def index
     @items = Item.all_by_id
   end
 
   def retire
-    @item = Item.find(params[:id])
     @item.retired!
     redirect_to admin_items_path
   end
 
   def activate
-    @item = Item.find(params[:id])
     @item.active!
     redirect_to admin_items_path
   end
@@ -22,7 +22,6 @@ class Admin::ItemsController < Admin::BaseController
 
   def create
     @item = Item.new(item_params)
-
     if @item.save
       redirect_to admin_items_path
     else
@@ -31,9 +30,21 @@ class Admin::ItemsController < Admin::BaseController
     end
   end
 
+  def edit
+  end
+
+  def update
+    @item.update(item_params)
+    redirect_to admin_items_path
+  end
+
   private
 
   def item_params
     params.require(:item).permit(:title, :description, :price, :avatar, :file, :category_id)
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
   end
 end

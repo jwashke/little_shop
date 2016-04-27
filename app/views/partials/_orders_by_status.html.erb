@@ -9,8 +9,8 @@
     <% orders.each do |order|%>
     <tr>
       <td><%= order.id %></td>
-      <td><%= order.created_at %></td>
-      <td><%= order.updated_at %></td>
+      <td><%= order.created_time %></td>
+      <td><%= order.updated_time %></td>
       <td><%= order.status %></td>
       <td><%= button_to_mark_order_completed(order) %></td>
       <td><%= button_to_cancel_order(order) %></td>

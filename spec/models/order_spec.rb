@@ -142,4 +142,20 @@ RSpec.describe Order, type: :model do
       expect(order.ordered?).to be(false)
     end
   end
+
+  describe ".updated_time" do
+    it "should return updated_at formatted nicer" do
+      order = create(:order)
+      formatted_time = order.updated_at.strftime("%b %e, %l:%M %p")
+      expect(order.updated_time).to eq(formatted_time)
+    end
+  end
+
+  describe ".created_time" do
+    it "should return created_at formatted nicer" do
+      order = create(:order)
+      formatted_time = order.created_at.strftime("%b %e, %l:%M %p")
+      expect(order.created_time).to eq(formatted_time)
+    end
+  end
 end
