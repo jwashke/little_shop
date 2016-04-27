@@ -15,7 +15,7 @@ RSpec.describe "User can visit category creation page" do
     admin = create(:admin)
     ApplicationController.any_instance.stubs(:current_user).returns(admin)
     visit new_admin_category_path
-    
+
     click_button "Create Category"
     expect(page).to have_content("Name can't be blank")
   end
