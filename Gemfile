@@ -26,7 +26,6 @@ gem 'bcrypt', '~> 3.1.7'
 
 # Use Unicorn as the app server
 gem 'unicorn'
-gem 'rails_12factor'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -38,6 +37,10 @@ gem 'formtastic', '~> 3.0'
 gem 'omniauth-oauth2'
 gem 'omniauth-github'
 gem 'figaro'
+
+group :production do
+  gem 'rails_12factor'
+end
 
 
 group :development, :test do

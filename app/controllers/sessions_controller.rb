@@ -2,15 +2,11 @@ class SessionsController < ApplicationController
   def create
     if auth_hash.present?
       @user = User.o_auth_find_or_create_by(auth_hash)
-      session[:user_id] = @user.id
-      flash[:notice] = "Successfully Logged in as #{@user.name}"
-      redirect_based_on_role
+      set_user_session_and_redirect
     else
       @user = User.find_by(email: params[:session][:email])
       if @user && @user.authenticate(params[:session][:password])
-        session[:user_id] = @user.id
-        flash[:notice] = "Successfully Logged in as #{@user.name}"
-        redirect_based_on_role
+        set_user_session_and_redirect
       else
         flash[:notice] = "Invalid Login"
         redirect_to login_path
@@ -35,5 +31,11 @@ class SessionsController < ApplicationController
 
   def auth_hash
     request.env["omniauth.auth"]
+  end
+
+  def set_user_session_and_redirect
+    session[:user_id] = @user.id
+    flash[:notice] = "Successfully Logged in as #{@user.name}"
+    redirect_based_on_role
   end
 end

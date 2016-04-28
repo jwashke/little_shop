@@ -12,6 +12,12 @@ FactoryGirl.define do
       end
       role 1
     end
+
+    factory :o_auth_user do
+      email "user@example.com"
+      name "user"
+      password "00000"
+    end
   end
 
 

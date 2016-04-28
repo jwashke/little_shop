@@ -15,13 +15,17 @@ class User < ActiveRecord::Base
       email: auth_hash[:info][:email],
       name: auth_hash[:info][:nickname],
     ).first
-    if user.nil?
-      user = create(
-        email: auth_hash[:info][:email],
-        name: auth_hash[:info][:nickname],
-        password: rand(1..10_000).to_s
-      )
-    end
+    user = create_user_from(auth_hash) if user.nil?
     user
+  end
+
+  private
+
+  def self.create_user_from(auth_hash)
+    create(
+      email: auth_hash[:info][:email],
+      name: auth_hash[:info][:nickname],
+      password: rand(1..10_000).to_s
+    )
   end
 end

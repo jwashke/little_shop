@@ -37,4 +37,43 @@ RSpec.describe User, type: :model do
       expect(user.admin?).to be(false)
     end
   end
+
+  describe ".self.o_auth_find_or_create_by" do
+    scenario "it should find a user who already exists" do
+      user = create(:o_auth_user)
+      auth_hash = {
+        info: {
+          email: "user@example.com",
+          nickname: "user"
+        }
+      }
+      found_user = User.o_auth_find_or_create_by(auth_hash)
+      expect(found_user.name).to eq(user.name)
+      expect(found_user.email).to eq(user.email)
+    end
+
+    scenario "it should create a user when one does not exist" do
+      auth_hash = {
+        info: {
+          email: "user@example.com",
+          nickname: "user"
+        }
+      }
+      user = User.o_auth_find_or_create_by(auth_hash)
+      expect(User.all.count).to eq(1)
+    end
+  end
+
+  describe ".self.create_user_from" do
+    scenario "it should create a user from an auth hash" do
+      auth_hash = {
+        info: {
+          email: "user@example.com",
+          nickname: "user"
+        }
+      }
+      user = User.create_user_from(auth_hash)
+      expect(User.all.count).to eq(1)
+    end
+  end
 end
