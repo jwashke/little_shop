@@ -16,7 +16,7 @@ class Order < ActiveRecord::Base
   end
 
   def total
-    order_items.inject(0) { |sum, order_item| sum + order_item.total }
+    order_items.inject(0) { |sum, order_item| sum + order_item.total }.round(2)
   end
 
   def cycle_status

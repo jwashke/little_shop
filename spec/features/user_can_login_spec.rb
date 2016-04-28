@@ -27,7 +27,7 @@ RSpec.feature "Visitor can visit login page" do
     within("#create-form") do
       fill_in :Email, with: "user@example.com"
       fill_in :Password, with: "password"
-      fill_in "First name", with: "Josh"
+      fill_in "Name", with: "Josh"
     end
     within("#create-form") do
       click_button("Create Account")

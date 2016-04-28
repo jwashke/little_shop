@@ -12,6 +12,8 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to dashboard_path
     else
+      flash[:notice] = @user.errors.full_messages.join(", ")
+      render :new
     end
   end
 
@@ -25,12 +27,7 @@ class UsersController < ApplicationController
     params.require(:user).permit(
       :email,
       :password,
-      :first_name,
-      :last_name,
-      :address,
-      :city,
-      :state,
-      :zip
+      :name,
     )
   end
 

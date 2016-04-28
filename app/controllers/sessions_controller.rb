@@ -3,13 +3,13 @@ class SessionsController < ApplicationController
     if auth_hash.present?
       @user = User.o_auth_find_or_create_by(auth_hash)
       session[:user_id] = @user.id
-      flash[:notice] = "Successfully Logged in as #{@user.first_name}"
+      flash[:notice] = "Successfully Logged in as #{@user.name}"
       redirect_based_on_role
     else
       @user = User.find_by(email: params[:session][:email])
       if @user && @user.authenticate(params[:session][:password])
         session[:user_id] = @user.id
-        flash[:notice] = "Successfully Logged in as #{@user.first_name}"
+        flash[:notice] = "Successfully Logged in as #{@user.name}"
         redirect_based_on_role
       else
         redirect_to login_path

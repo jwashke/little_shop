@@ -26,7 +26,7 @@ RSpec.feature "User can register an account" do
     within("#create-form") do
       fill_in :Email, with: "user@example.com"
       fill_in :Password, with: "password"
-      fill_in "First name", with: "Josh"
+      fill_in "Name", with: "Josh"
       click_button("Create Account")
     end
 

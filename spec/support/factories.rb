@@ -4,7 +4,7 @@ FactoryGirl.define do
       "person#{n}@example.com"
     end
     password "password"
-    first_name "Jon"
+    name "Jon"
 
     factory :admin do
       sequence :email do |n|

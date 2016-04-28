@@ -3,7 +3,7 @@
     <ul class="collection">
       <% @cart.all_items.each do |item| %>
         <li class="collection-item avatar">
-          <%= image_tag(item.image_path, class: "circle") %>
+          <%= image_tag(item.avatar.url, class: "circle") %>
           <span class="title"><%= item.title %></span>
           <p><%= item.description %></p>
 
