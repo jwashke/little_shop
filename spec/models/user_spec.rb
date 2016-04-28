@@ -59,7 +59,7 @@ RSpec.describe User, type: :model do
           nickname: "user"
         }
       }
-      user = User.o_auth_find_or_create_by(auth_hash)
+      User.o_auth_find_or_create_by(auth_hash)
       expect(User.all.count).to eq(1)
     end
   end
@@ -72,7 +72,7 @@ RSpec.describe User, type: :model do
           nickname: "user"
         }
       }
-      user = User.create_user_from(auth_hash)
+      User.create_user_from(auth_hash)
       expect(User.all.count).to eq(1)
     end
   end

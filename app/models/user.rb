@@ -19,8 +19,6 @@ class User < ActiveRecord::Base
     user
   end
 
-  private
-
   def self.create_user_from(auth_hash)
     create(
       email: auth_hash[:info][:email],
