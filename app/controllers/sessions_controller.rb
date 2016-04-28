@@ -12,6 +12,7 @@ class SessionsController < ApplicationController
         flash[:notice] = "Successfully Logged in as #{@user.name}"
         redirect_based_on_role
       else
+        flash[:notice] = "Invalid Login"
         redirect_to login_path
       end
     end
