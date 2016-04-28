@@ -52,5 +52,5 @@ RSpec.configure do |config|
     info: {
       email: "user@example.com",
       nickname: "user"
-  })
+    })
 end
